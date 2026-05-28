@@ -3,6 +3,7 @@ import { CheckCircle, Phone, Clock, Users, Zap, ArrowRight } from 'lucide-react'
 import { ElevenLabsWidget } from '@/components/ki-assistent/elevenlabs-widget'
 import { PageHero } from '@/components/layout/page-hero'
 import { PageSection } from '@/components/layout/page-section'
+import { StartCallButton } from './start-call-button'
 
 export const metadata: Metadata = {
   title: 'KI-Telefonassistent für Immobilienmakler | MaklerOS',
@@ -110,13 +111,10 @@ export default function KiAssistentPage() {
         subtitle="Automatisieren Sie Anfragen, qualifizieren Sie Interessenten rund um die Uhr und entlasten Sie Ihr Maklerbüro mit einem intelligenten KI-Assistenten."
       >
         <div className="flex flex-col sm:flex-row gap-4 mt-8">
-          <a
-            href="#live-demo"
-            className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
-          >
+          <StartCallButton className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-xl transition-colors">
             <Phone className="w-5 h-5" />
             Testgespräch starten
-          </a>
+          </StartCallButton>
           <a
             href="#preise"
             className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
@@ -244,13 +242,10 @@ export default function KiAssistentPage() {
             Starten Sie ein kostenloses Testgespräch und erleben Sie, wie der Assistent
             Immobilienanfragen professionell bearbeitet.
           </p>
-          <a
-            href="#live-demo"
-            className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-10 py-4 rounded-xl transition-colors shadow-lg shadow-blue-200"
-          >
+          <StartCallButton className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-10 py-4 rounded-xl transition-colors shadow-lg shadow-blue-200">
             <Phone className="w-5 h-5" />
             Testgespräch starten
-          </a>
+          </StartCallButton>
           <ElevenLabsWidget />
           <p className="text-xs text-slate-400 mt-6">
             Das Testgespräch ist kostenlos und unverbindlich. Keine Anmeldung erforderlich.
