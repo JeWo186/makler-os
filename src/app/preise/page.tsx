@@ -143,7 +143,7 @@ export default function PreisePage() {
                     {tier.name}
                   </p>
                   {tier.recommended && (
-                    <span className="text-[10px] font-medium text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md">
+                    <span className="text-[10px] font-semibold text-white bg-blue-600 px-2.5 py-0.5 rounded-full">
                       Empfohlen
                     </span>
                   )}
