@@ -175,18 +175,17 @@ export default function KiAssistentPage() {
                   : 'border border-slate-200',
               ].join(' ')}
             >
-              {plan.recommended && (
-                <div className="absolute -top-px left-1/2 -translate-x-1/2 -translate-y-1/2">
-                  <span className="bg-blue-600 text-white text-xs font-semibold px-4 py-1 rounded-full whitespace-nowrap">
-                    Meist gewählt
-                  </span>
-                </div>
-              )}
-
               <div className="mb-6">
-                <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">
-                  {plan.name}
-                </p>
+                <div className="flex items-center gap-2 mb-3">
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest">
+                    {plan.name}
+                  </p>
+                  {plan.recommended && (
+                    <span className="bg-blue-600 text-white text-xs font-semibold px-4 py-1 rounded-full whitespace-nowrap">
+                      Meist gewählt
+                    </span>
+                  )}
+                </div>
                 <div className="flex items-end gap-1 mb-3">
                   {plan.period ? (
                     <>
