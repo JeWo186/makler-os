@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
-import { ValuationWizard } from '@/components/bewertung/valuation-wizard'
 import { CheckCircle } from 'lucide-react'
+import { ValuationWizard } from '@/components/bewertung/valuation-wizard'
+import { PageHero } from '@/components/layout/page-hero'
+import { sectionPadding } from '@/lib/layout'
+import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
   title: 'Immobilie kostenlos bewerten – KI-Bewertungsrechner',
@@ -17,33 +20,32 @@ const BENEFITS = [
 
 export default function BewertungPage() {
   return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Header */}
-        <div className="text-center mb-10">
-          <span className="inline-block bg-blue-100 text-blue-700 text-sm font-medium px-3 py-1 rounded-full mb-4">
+    <>
+      <PageHero
+        align="center"
+        overline={
+          <span className="inline-block bg-white/10 border border-white/20 text-blue-100 text-sm font-medium px-4 py-1.5 rounded-full mb-6">
             KI-Bewertungsrechner
           </span>
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-            Was ist Ihre Immobilie wert?
-          </h1>
-          <p className="text-slate-500 max-w-xl mx-auto text-lg">
-            Unser Rechner analysiert Ihre Immobilie und liefert eine realistische
-            Marktpreiseinschätzung auf Basis aktueller Vergleichsdaten.
-          </p>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6">
-            {BENEFITS.map((b) => (
-              <div key={b} className="flex items-center gap-1.5 text-sm text-slate-600">
-                <CheckCircle className="w-4 h-4 text-green-500" />
-                {b}
-              </div>
-            ))}
-          </div>
+        }
+        title="Was ist Ihre Immobilie wert?"
+        subtitle="Unser Rechner analysiert Ihre Immobilie und liefert eine realistische Marktpreiseinschätzung auf Basis aktueller Vergleichsdaten."
+      >
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6">
+          {BENEFITS.map((b) => (
+            <div key={b} className="flex items-center gap-1.5 text-sm text-blue-100">
+              <CheckCircle className="w-4 h-4 text-green-400" />
+              {b}
+            </div>
+          ))}
         </div>
+      </PageHero>
 
-        {/* Wizard */}
-        <ValuationWizard />
+      <div className={cn('bg-slate-50', sectionPadding)}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ValuationWizard />
+        </div>
       </div>
-    </div>
+    </>
   )
 }

@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle, X, ArrowRight, Shield, BarChart2 } from 'lucide-react'
+import { PageHero } from '@/components/layout/page-hero'
+import { container, sectionPadding } from '@/lib/layout'
+import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
   title: 'Preise & Tarife | MaklerOS',
@@ -122,21 +125,15 @@ const EXPLANATIONS = [
 export default function PreisePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-gradient-to-b from-slate-50 to-white border-b border-slate-200">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-            Der passende Plan für Ihre Maklerpraxis
-          </h1>
-          <p className="text-lg text-slate-500 max-w-xl mx-auto">
-            Sichtbar werden, wo Kunden suchen. Monatlich kündbar, jederzeit upgraden.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        align="center"
+        title="Der passende Plan für Ihre Maklerpraxis"
+        subtitle="Sichtbar werden, wo Kunden suchen. Monatlich kündbar, jederzeit upgraden."
+      />
 
       {/* Tier-Karten */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className={cn('bg-white', sectionPadding)}>
+        <div className={container}>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
             {TIERS.map((tier) => (
               <div
@@ -210,8 +207,8 @@ export default function PreisePage() {
       </section>
 
       {/* Erklärungen */}
-      <section className="py-14 bg-slate-50 border-t border-slate-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className={cn('bg-slate-50 border-t border-slate-200', sectionPadding)}>
+        <div className={container}>
           <h2 className="text-xl font-bold text-slate-900 mb-8 text-center">
             Was bedeuten die Unterschiede?
           </h2>
@@ -230,7 +227,7 @@ export default function PreisePage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-14">
+      <section className={cn('bg-white', sectionPadding)}>
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-xl font-bold text-slate-900 mb-8 text-center">Häufige Fragen</h2>
           <div className="space-y-5">
@@ -266,7 +263,7 @@ export default function PreisePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-14 bg-slate-50 border-t border-slate-200">
+      <section className={cn('bg-slate-50 border-t border-slate-200', sectionPadding)}>
         <div className="max-w-xl mx-auto px-4 text-center">
           <h2 className="text-2xl font-bold text-slate-900 mb-3">Profil anlegen</h2>
           <p className="text-slate-500 mb-6">

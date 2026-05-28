@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ChevronRight } from 'lucide-react'
 import { BrokerCard } from '@/components/makler/broker-card'
+import { PageHero } from '@/components/layout/page-hero'
+import { Breadcrumb } from '@/components/layout/breadcrumb'
+import { container, contentPadding } from '@/lib/layout'
+import { cn } from '@/lib/utils'
 import type { Broker } from '@/types'
 
 const CITY_MAP: Record<string, string> = {
@@ -61,46 +63,40 @@ export default async function CitySpecPage({ params }: { params: Promise<Params>
   const brokers = getMockBrokers(cityName, specName)
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      {/* Breadcrumb */}
-      <nav className="flex items-center gap-1.5 text-sm text-slate-500 mb-6 flex-wrap">
-        <Link href="/" className="hover:text-slate-800">Startseite</Link>
-        <ChevronRight className="w-3.5 h-3.5" />
-        <Link href="/makler" className="hover:text-slate-800">Makler</Link>
-        <ChevronRight className="w-3.5 h-3.5" />
-        <Link href={`/makler/${city}`} className="hover:text-slate-800">{cityName}</Link>
-        <ChevronRight className="w-3.5 h-3.5" />
-        <span className="text-slate-800">{specName}</span>
-      </nav>
+    <>
+      <PageHero
+        breadcrumb={
+          <Breadcrumb items={[
+            { label: 'Startseite', href: '/' },
+            { label: 'Makler', href: '/makler' },
+            { label: cityName, href: `/makler/${city}` },
+            { label: specName },
+          ]} />
+        }
+        title={`${specName} Makler in ${cityName}`}
+        subtitle={`${brokers.length} spezialisierte Makler für ${specName} in ${cityName} – mit verifizierten Bewertungen von echten Kunden.`}
+      />
 
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-3">
-          {specName} Makler in {cityName}
-        </h1>
-        <p className="text-slate-500 max-w-2xl">
-          {brokers.length} spezialisierte Makler für {specName} in {cityName} –
-          mit verifizierten Bewertungen von echten Kunden.
-        </p>
-      </div>
+      <div className={cn(container, contentPadding)}>
+        <div className="grid gap-4">
+          {brokers.map((broker) => (
+            <BrokerCard key={broker.id} broker={broker} />
+          ))}
+        </div>
 
-      <div className="grid gap-4">
-        {brokers.map((broker) => (
-          <BrokerCard key={broker.id} broker={broker} />
-        ))}
+        {/* SEO Block */}
+        <div className="mt-16 bg-slate-50 rounded-2xl p-8">
+          <h2 className="text-xl font-bold text-slate-900 mb-4">
+            Was ist ein {specName}-Makler?
+          </h2>
+          <p className="text-slate-600 leading-relaxed">
+            {specName}-Makler in {cityName} sind auf diese spezifische Immobilienart spezialisiert
+            und verfügen über tiefes Marktkenntnis, ein starkes Netzwerk aus Kaufinteressenten
+            und Erfahrung mit den typischen rechtlichen und steuerlichen Besonderheiten dieser
+            Immobilienkategorie.
+          </p>
+        </div>
       </div>
-
-      {/* SEO Block */}
-      <div className="mt-16 bg-slate-50 rounded-2xl p-8">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">
-          Was ist ein {specName}-Makler?
-        </h2>
-        <p className="text-slate-600 leading-relaxed">
-          {specName}-Makler in {cityName} sind auf diese spezifische Immobilienart spezialisiert
-          und verfügen über tiefes Marktkenntnis, ein starkes Netzwerk aus Kaufinteressenten
-          und Erfahrung mit den typischen rechtlichen und steuerlichen Besonderheiten dieser
-          Immobilienkategorie.
-        </p>
-      </div>
-    </div>
+    </>
   )
 }

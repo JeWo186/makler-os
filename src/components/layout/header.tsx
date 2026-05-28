@@ -6,9 +6,10 @@ import { Menu, X, Home } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const nav = [
-  { href: '/makler',   label: 'Makler finden' },
-  { href: '/bewertung', label: 'Immobilie bewerten' },
-  { href: '/preise',   label: 'Preise' },
+  { href: '/makler',        label: 'Makler finden' },
+  { href: '/bewertung',     label: 'Immobilie bewerten' },
+  { href: '/ki-assistent',  label: 'KI-Assistent' },
+  { href: '/preise',        label: 'Preise' },
 ]
 
 export function Header() {
