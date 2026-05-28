@@ -52,7 +52,7 @@ const PLANS = [
   },
   {
     id: 'professional',
-    name: 'Professional',
+    name: 'Pro',
     price: '349',
     period: 'pro Monat',
     desc: 'Für wachsende Maklerbüros mit höherem Anrufvolumen und individuellen Anforderungen.',
