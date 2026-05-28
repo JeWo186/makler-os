@@ -159,34 +159,33 @@ export default function KiAssistentPage() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-6 items-stretch">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
           {PLANS.map((plan) => (
             <div
               key={plan.id}
               className={[
-                'relative bg-white rounded-2xl p-7 flex flex-col',
+                'relative bg-white rounded-2xl p-6 flex flex-col',
                 plan.recommended
-                  ? 'border-2 border-blue-500 shadow-lg shadow-blue-100'
+                  ? 'border border-slate-300 shadow-sm'
                   : 'border border-slate-200',
               ].join(' ')}
             >
-              {plan.recommended && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="bg-blue-600 text-white text-xs font-semibold px-4 py-1 rounded-full whitespace-nowrap">
-                    Meist gewählt
-                  </span>
+              <div className="mb-5">
+                <div className="flex items-center gap-2 mb-3">
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
+                    {plan.name}
+                  </p>
+                  {plan.recommended && (
+                    <span className="text-[10px] font-semibold text-white bg-blue-600 px-2.5 py-0.5 rounded-full">
+                      Meist gewählt
+                    </span>
+                  )}
                 </div>
-              )}
-
-              <div className="mb-6">
-                <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">
-                  {plan.name}
-                </p>
                 <div className="flex items-end gap-1 mb-3">
                   {plan.period ? (
                     <>
-                      <span className="text-4xl font-bold text-slate-900">{plan.price} €</span>
-                      <span className="text-sm text-slate-400 mb-1">/ {plan.period}</span>
+                      <span className="text-3xl font-bold text-slate-900">{plan.price} €</span>
+                      <span className="text-sm text-slate-400 mb-0.5 pb-0.5">/ {plan.period}</span>
                     </>
                   ) : (
                     <span className="text-3xl font-bold text-slate-900">{plan.price}</span>
@@ -195,7 +194,7 @@ export default function KiAssistentPage() {
                 <p className="text-sm text-slate-500 leading-relaxed">{plan.desc}</p>
               </div>
 
-              <ul className="space-y-3 flex-1 mb-7 border-t border-slate-100 pt-6">
+              <ul className="space-y-2.5 flex-1 mb-6 border-t border-slate-100 pt-5">
                 {plan.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5">
                     <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
@@ -207,12 +206,12 @@ export default function KiAssistentPage() {
               <a
                 href="#live-demo"
                 className={[
-                  'block text-center py-3 px-5 rounded-xl font-semibold text-sm transition-colors',
+                  'block text-center py-2.5 px-4 rounded-xl font-semibold text-sm transition-colors',
                   plan.recommended
-                    ? 'bg-blue-600 text-white hover:bg-blue-700'
+                    ? 'bg-blue-700 text-white hover:bg-blue-800'
                     : plan.id === 'enterprise'
                       ? 'bg-slate-900 text-white hover:bg-slate-800'
-                      : 'border border-slate-300 text-slate-700 hover:bg-slate-50',
+                      : 'border border-slate-200 text-slate-700 hover:bg-slate-50',
                 ].join(' ')}
               >
                 {plan.cta}
