@@ -9,7 +9,12 @@ export function StartCallButton({ className, children }: { className: string; ch
       className={className}
       onClick={() => {
         const widget = document.querySelector('elevenlabs-convai') as any
-        widget?.startConversation()
+        if (typeof widget?.startConversation === 'function') {
+          widget.startConversation()
+        } else {
+          const shadowBtn = widget?.shadowRoot?.querySelector('button') as HTMLElement | null
+          shadowBtn ? shadowBtn.click() : widget?.click()
+        }
       }}
     >
       {children}
