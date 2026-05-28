@@ -176,7 +176,7 @@ export default function KiAssistentPage() {
               ].join(' ')}
             >
               {plan.recommended && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                <div className="absolute -top-px left-1/2 -translate-x-1/2 -translate-y-1/2">
                   <span className="bg-blue-600 text-white text-xs font-semibold px-4 py-1 rounded-full whitespace-nowrap">
                     Meist gewählt
                   </span>
