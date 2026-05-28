@@ -181,7 +181,7 @@ export default function KiAssistentPage() {
                     {plan.name}
                   </p>
                   {plan.recommended && (
-                    <span className="bg-blue-600 text-white text-xs font-semibold px-4 py-1 rounded-full whitespace-nowrap">
+                    <span className="bg-white border border-blue-500 text-blue-600 text-xs font-semibold px-4 py-1 rounded-full whitespace-nowrap">
                       Meist gewählt
                     </span>
                   )}
