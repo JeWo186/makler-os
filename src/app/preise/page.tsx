@@ -120,7 +120,7 @@ export default function PreisePage() {
     <>
       <PageHero
         align="center"
-        title={<>Der passende <span className="text-blue-400">Plan</span> für Ihr Maklerbüro</>}
+        title={<>Der <span className="text-blue-400">passende Plan</span> für Ihr Maklerbüro</>}
         subtitle="Professionelle Präsenz für Immobilienmakler — flexibel skalierbar und monatlich kündbar."
       />
 
