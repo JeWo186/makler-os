@@ -120,7 +120,7 @@ export default function PreisePage() {
     <>
       <PageHero
         align="center"
-        title="Der passende Plan für Ihre Maklerpraxis"
+        title={<>Der passende <span className="text-blue-400">Plan</span> für Ihr Maklerbüro</>}
         subtitle="Sichtbar werden, wo Kunden suchen. Monatlich kündbar, jederzeit upgraden."
       />
 
