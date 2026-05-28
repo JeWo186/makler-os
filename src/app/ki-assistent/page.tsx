@@ -171,7 +171,7 @@ export default function KiAssistentPage() {
               className={[
                 'relative bg-white rounded-2xl p-7 flex flex-col',
                 plan.recommended
-                  ? 'border-2 border-blue-500 shadow-lg shadow-blue-100'
+                  ? 'border border-slate-200 shadow-lg shadow-blue-100'
                   : 'border border-slate-200',
               ].join(' ')}
             >
