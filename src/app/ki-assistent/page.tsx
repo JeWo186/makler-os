@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { CheckCircle, Phone, Clock, Users, Zap, ArrowRight } from 'lucide-react'
+import Script from 'next/script'
 import { ElevenLabsWidget } from '@/components/ki-assistent/elevenlabs-widget'
 import { PageHero } from '@/components/layout/page-hero'
 import { PageSection } from '@/components/layout/page-section'
@@ -92,6 +93,7 @@ const PLANS = [
 export default function KiAssistentPage() {
   return (
     <>
+      <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" strategy="afterInteractive" />
       {/* Hero */}
       <PageHero
         badge={
