@@ -11,12 +11,13 @@ export const metadata: Metadata = {
 
 const TIERS = [
   {
-    id:     'free',
-    name:   'Free',
-    price:  '0',
-    period: 'für immer',
-    desc:   'Einstieg ohne Kosten. Profil anlegen und in der Maklersuche erscheinen.',
-    cta:    'Kostenlos starten',
+    id:          'free',
+    name:        'Free',
+    price:       '0',
+    period:      'für immer',
+    desc:        'Einstieg ohne Kosten. Profil anlegen und in der Maklersuche erscheinen.',
+    recommended: false,
+    cta:         'Kostenlos starten',
     features: [
       { label: 'Profil in der Maklersuche',          included: true  },
       { label: '1 Profilfoto',                        included: true  },
@@ -32,12 +33,13 @@ const TIERS = [
     ],
   },
   {
-    id:     'basic',
-    name:   'Basic',
-    price:  '29',
-    period: 'pro Monat',
-    desc:   'Vollständiges Profil mit professioneller Darstellung und Verifizierung.',
-    cta:    'Jetzt starten',
+    id:          'basic',
+    name:        'Basic',
+    price:       '29',
+    period:      'pro Monat',
+    desc:        'Vollständiges Profil mit professioneller Darstellung und Verifizierung.',
+    recommended: false,
+    cta:         'Jetzt starten',
     features: [
       { label: 'Profil in der Maklersuche',          included: true  },
       { label: 'Galerie (bis zu 5 Fotos)',             included: true  },
@@ -52,12 +54,13 @@ const TIERS = [
     ],
   },
   {
-    id:     'pro',
-    name:   'Pro',
-    price:  '79',
-    period: 'pro Monat',
-    desc:   'Stärkere Außenwirkung durch erhöhte Sichtbarkeit und regelmäßige Profiloptimierung.',
-    cta:    'Jetzt starten',
+    id:          'pro',
+    name:        'Pro',
+    price:       '79',
+    period:      'pro Monat',
+    desc:        'Stärkere Außenwirkung durch erhöhte Sichtbarkeit und regelmäßige Profiloptimierung.',
+    recommended: true,
+    cta:         'Jetzt starten',
     features: [
       { label: 'Profil in der Maklersuche',          included: true  },
       { label: 'Galerie (bis zu 15 Fotos)',            included: true  },
@@ -72,12 +75,13 @@ const TIERS = [
     ],
   },
   {
-    id:     'premium',
-    name:   'Premium',
-    price:  '199',
-    period: 'pro Monat',
-    desc:   'Maximale Präsenz mit bevorzugter Platzierung, datenbasierten Empfehlungen und persönlichem Support.',
-    cta:    'Premium anfragen',
+    id:          'premium',
+    name:        'Premium',
+    price:       '199',
+    period:      'pro Monat',
+    desc:        'Maximale Präsenz mit bevorzugter Platzierung, datenbasierten Empfehlungen und persönlichem Support.',
+    recommended: false,
+    cta:         'Premium anfragen',
     features: [
       { label: 'Profil in der Maklersuche',          included: true  },
       { label: 'Galerie (bis zu 30 Fotos + Cover)',   included: true  },
@@ -126,12 +130,24 @@ export default function PreisePage() {
           {TIERS.map((tier) => (
             <div
               key={tier.id}
-              className="relative bg-white rounded-2xl p-6 flex flex-col border border-slate-200"
+              className={[
+                'relative bg-white rounded-2xl p-6 flex flex-col',
+                tier.recommended
+                  ? 'border border-slate-300 shadow-sm'
+                  : 'border border-slate-200',
+              ].join(' ')}
             >
               <div className="mb-5">
-                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">
-                  {tier.name}
-                </p>
+                <div className="flex items-center gap-2 mb-3">
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
+                    {tier.name}
+                  </p>
+                  {tier.recommended && (
+                    <span className="text-[10px] font-medium text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md">
+                      Empfohlen
+                    </span>
+                  )}
+                </div>
                 <div className="flex items-end gap-1 mb-3">
                   <span className="text-3xl font-bold text-slate-900">{tier.price} €</span>
                   <span className="text-sm text-slate-400 mb-0.5 pb-0.5">/ {tier.period}</span>
@@ -156,7 +172,14 @@ export default function PreisePage() {
 
               <Link
                 href="/profil-erstellen"
-                className="block text-center py-2.5 px-4 rounded-xl font-semibold text-sm transition-colors bg-slate-900 text-white hover:bg-slate-800"
+                className={[
+                  'block text-center py-2.5 px-4 rounded-xl font-semibold text-sm transition-colors',
+                  tier.id === 'free'
+                    ? 'border border-slate-200 text-slate-700 hover:bg-slate-50'
+                    : tier.recommended
+                      ? 'bg-blue-700 text-white hover:bg-blue-800'
+                      : 'bg-slate-900 text-white hover:bg-slate-800',
+                ].join(' ')}
               >
                 {tier.cta}
               </Link>
