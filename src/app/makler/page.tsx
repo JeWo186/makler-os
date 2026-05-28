@@ -5,8 +5,7 @@ import { BrokerCard } from '@/components/makler/broker-card'
 import { SearchFilter } from '@/components/search/search-filter'
 import { MOCK_BROKERS, MOCK_SPECIALIZATIONS, filterBrokers } from '@/lib/mock-data'
 import { PageHero } from '@/components/layout/page-hero'
-import { container, contentPadding } from '@/lib/layout'
-import { cn } from '@/lib/utils'
+import { PageSection } from '@/components/layout/page-section'
 
 export const metadata: Metadata = {
   title: 'Immobilienmakler in Deutschland finden',
@@ -23,8 +22,8 @@ export default async function MaklerPage({ searchParams }: Props) {
   return (
     <>
       <PageHero
-        overline={
-          <div className="flex items-center gap-1.5 text-sm text-slate-300 mb-3">
+        badge={
+          <div className="flex items-center gap-1.5 text-sm text-slate-300">
             <MapPin className="w-4 h-4" />
             <span>Deutschland</span>
           </div>
@@ -33,7 +32,7 @@ export default async function MaklerPage({ searchParams }: Props) {
         subtitle={`${brokers.length} Makler gefunden – verifiziert und bewertet.`}
       />
 
-      <div className={cn(container, contentPadding)}>
+      <PageSection>
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Filter sidebar */}
           <aside className="lg:w-64 flex-shrink-0">
@@ -58,7 +57,7 @@ export default async function MaklerPage({ searchParams }: Props) {
             )}
           </div>
         </div>
-      </div>
+      </PageSection>
     </>
   )
 }

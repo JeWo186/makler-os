@@ -72,8 +72,8 @@ export default async function CityPage({ params }: { params: Promise<Params> }) 
             { label: cityData.name },
           ]} />
         }
-        overline={
-          <div className="flex items-center gap-1.5 text-sm text-slate-300 mb-3">
+        badge={
+          <div className="flex items-center gap-1.5 text-sm text-slate-300">
             <MapPin className="w-4 h-4" />
             <span>{cityData.state}</span>
           </div>
