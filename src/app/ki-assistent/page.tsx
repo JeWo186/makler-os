@@ -59,6 +59,7 @@ const PLANS = [
     recommended: true,
     cta: 'Jetzt starten',
     features: [
+      'Alle Funktionen aus BASIS enthalten',
       'Bis zu 500 Anrufe / Monat',
       '24/7 Erreichbarkeit',
       'Automatische Lead-Qualifizierung',
@@ -76,6 +77,7 @@ const PLANS = [
     recommended: false,
     cta: 'Kontakt aufnehmen',
     features: [
+      'Alle Funktionen aus PROFESSIONAL enthalten',
       'Unbegrenzte Anrufe',
       'Mehrere Rufnummern / Standorte',
       'Vollständige CRM-Integration',
